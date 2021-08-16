@@ -19,7 +19,7 @@ export class Laboratory {
   name: string;
 
   @Column('text')
-  eddress: string;
+  address: string;
 
   @Column({ default: Status.ACTIVE })
   status: Status;

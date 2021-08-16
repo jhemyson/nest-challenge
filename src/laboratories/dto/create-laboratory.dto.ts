@@ -10,5 +10,5 @@ export class CreateLaboratoryDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  eddress: string;
+  address: string;
 }

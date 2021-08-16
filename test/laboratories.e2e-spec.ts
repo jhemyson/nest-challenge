@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
-describe('AppController (e2e)', () => {
+describe('Laboratories', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
@@ -15,7 +15,18 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer()).get('/v1/laboratories').expect(200);
+  describe('/GET laboratories', () => {
+    it('should return status code 200 and body', async () => {
+      const { status, body } = await request(app.getHttpServer()).get(
+        '/v1/laboratories',
+      );
+
+      expect(status).toBe(200);
+      expect(typeof body).toStrictEqual('object');
+    });
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });

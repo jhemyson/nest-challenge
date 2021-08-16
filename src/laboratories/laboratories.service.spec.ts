@@ -36,7 +36,7 @@ describe('LaboratoriesService', () => {
       it('should new laboratory and return that', async () => {
         const payload = {
           name: 'fake-name',
-          eddress: 'fake-address',
+          address: 'fake-address',
           status: Status.ACTIVE,
         };
         expect(await service.create(payload)).toEqual(payload);
@@ -55,7 +55,7 @@ describe('LaboratoriesService', () => {
         const payload = {
           id: 1,
           name: 'fake-name',
-          eddress: 'fake-address',
+          address: 'fake-address',
           status: Status.ACTIVE,
         };
         jest
@@ -72,7 +72,7 @@ describe('LaboratoriesService', () => {
       it('should return only active laboratories', async () => {
         const payload = {
           name: 'fake-name',
-          eddress: 'fake-address',
+          address: 'fake-address',
           status: Status.ACTIVE,
         };
 
@@ -98,7 +98,7 @@ describe('LaboratoriesService', () => {
         const payload = {
           id: 1,
           name: 'fake-name',
-          eddress: 'fake-address',
+          address: 'fake-address',
           status: Status.ACTIVE,
         };
 
