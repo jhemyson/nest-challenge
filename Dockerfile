@@ -2,7 +2,7 @@ FROM node:12 As development
 
 WORKDIR /usr/src/app
 
-COPY package.json .
+COPY package*.json .
 
 RUN npm install
 
@@ -17,8 +17,8 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/app
 
-COPY package.json .
-COPY package-lock.json .
+COPY package*.json .
+
 
 RUN npm install --only=production
 
@@ -26,4 +26,5 @@ COPY . .
 
 COPY --from=development /usr/src/app/dist ./dist
 
+EXPOSE 3000
 CMD ["node", "dist/main"]

@@ -26,4 +26,14 @@ export const db_config_env = {
     },
     migrations: ['src/migration/*{.ts,.js}'],
   },
+  production: {
+    type: 'sqlite',
+    database: 'wa_db',
+    entities: [Laboratory, Exam],
+    synchronize: true,
+    cli: {
+      migrationsDir: 'src/migration',
+    },
+    migrations: ['src/migration/*{.ts,.js}'],
+  },
 };
