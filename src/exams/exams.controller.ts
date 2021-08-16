@@ -6,11 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { ExamsService } from './exams.service';
 import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('exams')
 @Controller('exams')
@@ -23,8 +24,12 @@ export class ExamsController {
   }
 
   @Get()
-  findAll() {
-    return this.examsService.findAll();
+  @ApiQuery({ name: 'page', required: false, type: Number })
+  @ApiQuery({ name: 'limit', required: false, type: Number })
+  findAll(@Query('page') page = 1, @Query('limit') limit = 100) {
+    limit = limit > 100 ? 100 : limit;
+
+    return this.examsService.findAll({ page, limit });
   }
 
   @Get(':id')

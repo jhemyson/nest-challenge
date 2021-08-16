@@ -5,7 +5,14 @@ import { Repository } from 'typeorm';
 import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto';
 import { Exam } from './entities/exam.entity';
-import { Status } from 'src/_utils/enum/status.enum';
+import { Status } from '../_utils/enum/status.enum';
+
+import {
+  IPaginationMeta,
+  IPaginationOptions,
+  paginate,
+  Pagination,
+} from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class ExamsService {
@@ -31,8 +38,24 @@ export class ExamsService {
     return await this.examRepo.save(newExam);
   }
 
-  findAll(): Promise<Exam[]> {
-    return this.examRepo.find({ where: { status: Status.ACTIVE } });
+  async findAll(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Exam, IPaginationMeta>> {
+    const queryBuilder = this.examRepo
+      .createQueryBuilder('ex')
+      .where('ex.status =:status', { status: Status.ACTIVE });
+
+    queryBuilder.select([
+      'ex.id',
+      'ex.name',
+      'ex.type',
+      'ex.createdAt',
+      'ex.updatedAt',
+    ]);
+
+    queryBuilder.orderBy('ex.id', 'ASC');
+
+    return await paginate<Exam>(queryBuilder, options);
   }
 
   async findOne(id: number): Promise<Exam> {
