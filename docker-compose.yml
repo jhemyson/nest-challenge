@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  api:
+    container_name: nest_api
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+      - 9229:9229
+    command: npm run start:debug
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    container_name: mysql_db
+    image: mysql/mysql-server:8.0.23
+    command: --default-authentication-plugin=mysql_native_password --lower_case_table_names=1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wa_db
+      MYSQL_ROOT_HOST: "%"
+
+  adminer:
+    container_name: mysql_dash_admin
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
