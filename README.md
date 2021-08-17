@@ -6,6 +6,9 @@ O projeto foi desenvolvido utilizando o framework NestJS. Tomei essa decisão pe
 
 Todo o projeto foi pensado e estruturado para ser feito com todos testes unitários e de integração, devido ao curto prazo, acabei optando por criar apenas alguns exemplos de testes **unitários** ```src/laboratories/laboratories.service.spec.ts``` e de **integração** ```test/laboratories.e2e-spec.ts```,
 
+## CLOUD
+##### Aplicação rodando na AWS ```http://ec2-34-232-46-21.compute-1.amazonaws.com:3000/api/```
+
 ##### No end-point de ```GET v1/exams``` foi criado com paginação (como exemplo que os outros end-points ```/GET``` seguiriam)
 
 ## Estrutura de pastas
