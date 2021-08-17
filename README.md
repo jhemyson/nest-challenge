@@ -28,9 +28,11 @@ Todo o projeto foi pensado e estruturado para ser feito com todos testes unitár
 - ``` http://localhost:3000/api ```
 
 ## Instalação
+#### caso na hora de instalar os pacotes dê algum erro, preferível usar o Yarn como instalador de pacote
 
 ```bash
 $ npm install
+$ yarn install
 ```
 
 ## Rodar o projeto com Docker
