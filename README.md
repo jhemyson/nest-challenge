@@ -9,7 +9,7 @@ Todo o projeto foi pensado e estruturado para ser feito com todos testes unitár
 ## CLOUD
 ##### Aplicação rodando na AWS ```http://ec2-34-232-46-21.compute-1.amazonaws.com:3000/api/```
 
-##### No end-point de ```GET v1/exams``` foi criado com paginação (como exemplo que os outros end-points ```/GET``` seguiriam)
+##### No end-point de ```GET /exams``` foi criado com paginação (como exemplo que os outros end-points ```/GET``` seguiriam)
 
 ## Estrutura de pastas
 
